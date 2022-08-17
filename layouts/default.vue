@@ -28,26 +28,12 @@
       <!-- end sidebar -->
 
       <v-toolbar-title v-text="title" />
-      <v-spacer />
-      <v-btn icon @click.stop="rightDrawer = !rightDrawer">
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
     </v-app-bar>
     <v-main>
       <v-container>
         <Nuxt />
       </v-container>
     </v-main>
-    <v-navigation-drawer v-model="rightDrawer" :right="right" temporary fixed>
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light> mdi-repeat </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
   </v-app>
 </template>
 
@@ -59,19 +45,23 @@ export default {
       sideDrawer: false,
       items: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
+          icon: 'mdi-application',
+          title: 'App',
           to: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire',
+          icon: 'mdi-account',
+          title: 'Account',
+          to: '/account',
+        },
+        {
+          icon: 'mdi-bell',
+          title: 'Notification',
+          to: '/notification',
         },
       ],
       right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js',
+      title: 'Cashier',
     }
   },
 }
