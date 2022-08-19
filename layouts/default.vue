@@ -7,7 +7,7 @@
     >
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
+          v-for="(item, i) in sideMenu"
           :key="i"
           :to="item.to"
           router
@@ -34,6 +34,21 @@
         <Nuxt />
       </v-container>
     </v-main>
+
+    <v-bottom-navigation
+      horizontal
+      height="10vh"
+      fixed
+      color="primary"
+      app
+    >
+      <v-app-bar-nav-icon @click.stop="sideDrawer = !sideDrawer" v-ripple="false" plain />
+        <v-btn v-for="(item, i) in bottomMenu" :key="i" :to="item.to" v-ripple="false" plain large>
+          <span>{{ item.title }}</span>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-btn>
+        <v-spacer />
+    </v-bottom-navigation>
   </v-app>
 </template>
 
@@ -43,12 +58,7 @@ export default {
   data() {
     return {
       sideDrawer: false,
-      items: [
-        {
-          icon: 'mdi-application',
-          title: 'App',
-          to: '/',
-        },
+      sideMenu: [
         {
           icon: 'mdi-account',
           title: 'Account',
@@ -59,6 +69,14 @@ export default {
           title: 'Notification',
           to: '/notification',
         },
+      ],
+      bottomMenu: [
+        {
+          icon: 'mdi-application',
+          title: 'App',
+          to: '/',
+        },
+        
       ],
       right: true,
       title: 'Cashier',
